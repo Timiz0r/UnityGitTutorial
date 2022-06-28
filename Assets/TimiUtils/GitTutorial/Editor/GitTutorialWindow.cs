@@ -1,4 +1,5 @@
 using UnityEditor;
+using UnityEngine;
 
 namespace TimiUtils.GitTutorial
 {
@@ -12,11 +13,6 @@ namespace TimiUtils.GitTutorial
             EditorWindow.GetWindow<GitTutorialWindow>("Git Tutorial").Show();
         }
 
-        public void Awake()
-        {
-            tutorialSelector = new GitTutorialSelector();
-        }
-
         public void OnGUI()
         {
             tutorialSelector = tutorialSelector ?? new GitTutorialSelector();
@@ -26,7 +22,11 @@ namespace TimiUtils.GitTutorial
             }
             if (tutorialSelector.SelectedTutorial == null) return;
 
-            tutorialSelector.SelectedTutorial.Render();
+            tutorialSelector.SelectedTutorial.Render(out var finished);
+            if (finished)
+            {
+                tutorialSelector = new GitTutorialSelector();
+            }
         }
     }
 }

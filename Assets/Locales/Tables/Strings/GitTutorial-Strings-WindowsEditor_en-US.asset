@@ -22,5 +22,25 @@ MonoBehaviour:
     m_Localized: Start
     m_Metadata:
       m_Items: []
+  - m_Id: 56946506858496
+    m_Localized: Platform
+    m_Metadata:
+      m_Items: []
+  - m_Id: 59413248344064
+    m_Localized: Jump to page
+    m_Metadata:
+      m_Items: []
+  - m_Id: 60109188235264
+    m_Localized: Reset
+    m_Metadata:
+      m_Items: []
+  - m_Id: 63146866769920
+    m_Localized: Previous page
+    m_Metadata:
+      m_Items: []
+  - m_Id: 63279620685824
+    m_Localized: Next page
+    m_Metadata:
+      m_Items: []
   references:
     version: 1

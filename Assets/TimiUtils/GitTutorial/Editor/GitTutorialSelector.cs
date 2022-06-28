@@ -46,6 +46,9 @@ namespace TimiUtils.GitTutorial
                 SetLocale(availableLocales[selectedLocaleIndex]);
             }
 
+            var context = settings.GetContext("TutorialSelector");
+
+            EditorGUILayout.LabelField(context.GetString("PlatformLabel"));
             var newPlatformIndex = EditorGUILayout.Popup(
                 selectedPlatformIndex,
                 GitTutorialSettings.SupportedPlatforms
@@ -56,7 +59,7 @@ namespace TimiUtils.GitTutorial
                 selectedPlatformIndex = newPlatformIndex;
             }
 
-            if (GUILayout.Button(settings.GetString("TutorialSelector.StartButton")))
+            if (GUILayout.Button(context.GetString("StartButton")))
             {
                 SelectedTutorial = new GitTutorial(settings);
             }

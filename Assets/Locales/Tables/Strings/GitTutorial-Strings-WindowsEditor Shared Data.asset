@@ -16,7 +16,27 @@ MonoBehaviour:
   m_TableCollectionNameGuidString: 9221ec28ea833034b8abdb44d02dd93e
   m_Entries:
   - m_Id: 50508132777984
-    m_Key: TutorialSelector.Start
+    m_Key: TutorialSelector.StartButton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 56946506858496
+    m_Key: TutorialSelector.PlatformLabel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 59413248344064
+    m_Key: Tutorial.JumpLabel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 60109188235264
+    m_Key: Tutorial.ResetLabel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 63146866769920
+    m_Key: Tutorial.PreviousPage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 63279620685824
+    m_Key: Tutorial.NextPage
     m_Metadata:
       m_Items: []
   m_Metadata:

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Localization.Settings;
 using UnityEngine.Localization.Tables;
@@ -14,6 +15,9 @@ namespace TimiUtils.GitTutorial
         private readonly AssetTable assetTable;
         private readonly RuntimePlatform platform;
         private readonly string prefix = string.Empty;
+
+        //TODO: false before shipping ofc
+        public bool GenerateStringTableEntries = true;
 
         public GitTutorialSettings(
             LocalizationSettings localizationSettings,
@@ -36,16 +40,43 @@ namespace TimiUtils.GitTutorial
             string prefix
         ) : this(localizationSettings, platform)
         {
-            this.prefix = prefix;
+            this.prefix = string.IsNullOrEmpty(prefix) ? throw new ArgumentNullException(prefix) : prefix + ".";
         }
 
         public GitTutorialSettings GetContext(string prefix)
-            => new GitTutorialSettings(localizationSettings, platform, prefix);
+            => new GitTutorialSettings(
+                localizationSettings,
+                platform,
+                this.prefix + prefix);
 
         public string GetString(string key)
-            => stringTable[key]?.LocalizedValue ?? throw new ArgumentOutOfRangeException(nameof(key), $"There is no value for key '{key}'.");
+        {
+            key = prefix + key;
+            var result = stringTable[key]?.LocalizedValue;
+            if (result == null)
+            {
+                if (!GenerateStringTableEntries) throw new ArgumentOutOfRangeException(nameof(key), $"There is no value for key '{key}'.");
+
+                stringTable.AddEntry(key, result = "TODO");
+                EditorUtility.SetDirty(stringTable); //dont actually know if this is needed
+            }
+
+            return result;
+        }
 
         public string GetString(string key, params object[] args)
-            => stringTable[key]?.GetLocalizedString(args) ?? throw new ArgumentOutOfRangeException(nameof(key), $"There is no value for key '{key}'.");
+        {
+            key = prefix + key;
+            var result = stringTable[key]?.GetLocalizedString(args);
+            if (result == null)
+            {
+                if (!GenerateStringTableEntries) throw new ArgumentOutOfRangeException(nameof(key), $"There is no value for key '{key}'.");
+
+                stringTable.AddEntry(key, result = "TODO");
+                EditorUtility.SetDirty(stringTable);
+            }
+
+            return result;
+        }
     }
 }
