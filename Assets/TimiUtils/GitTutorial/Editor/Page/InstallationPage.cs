@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using UnityEditor;
+using UnityEngine;
 
 namespace TimiUtils.GitTutorial
 {
@@ -15,7 +16,10 @@ namespace TimiUtils.GitTutorial
 
         public void Render()
         {
-            throw new System.NotImplementedException();
+            EditorGUILayout.LabelField(settings.GetString("Label1"), new GUIStyle(EditorStyles.label)
+            {
+                wordWrap = true
+            });
         }
     }
 }

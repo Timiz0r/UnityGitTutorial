@@ -25,14 +25,14 @@ namespace TimiUtils.GitTutorial
         internal void Render(out bool finished)
         {
             finished = false;
-            var tutorialContext = settings.GetContext("Tutorial");
+            var context = settings.GetContext("Tutorial");
 
             EditorGUILayout.BeginHorizontal();
             currentPageIndex = EditorGUILayout.Popup(
-                tutorialContext.GetString("JumpLabel"),
+                context.GetString("JumpLabel"),
                 currentPageIndex,
                 pages.Select(p => p.Name).ToArray());
-            if (GUILayout.Button(tutorialContext.GetString("ResetLabel")))
+            if (GUILayout.Button(context.GetString("ResetLabel")))
             {
                 finished = true;
                 return;
@@ -41,17 +41,29 @@ namespace TimiUtils.GitTutorial
 
             EditorGUILayout.BeginHorizontal();
             EditorGUI.BeginDisabledGroup(currentPageIndex == 0);
-            if (GUILayout.Button(tutorialContext.GetString("PreviousPage")))
+            if (GUILayout.Button(context.GetString("PreviousPage")))
             {
                 currentPageIndex--;
             }
             EditorGUI.EndDisabledGroup();
             EditorGUI.BeginDisabledGroup(currentPageIndex + 1 >= pages.Count);
-            if (GUILayout.Button(tutorialContext.GetString("NextPage")))
+            if (GUILayout.Button(context.GetString("NextPage")))
             {
                 currentPageIndex++;
             }
+            EditorGUI.EndDisabledGroup();
             EditorGUILayout.EndHorizontal();
+
+            var currentPage = pages[currentPageIndex];
+            EditorGUILayout.LabelField(currentPage.Name, new GUIStyle(EditorStyles.largeLabel)
+            {
+                fontSize = 28,
+                wordWrap = true
+            });
+
+            EditorGUILayout.Space();
+
+            currentPage.Render();
         }
     }
 }

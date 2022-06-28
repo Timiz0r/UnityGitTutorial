@@ -42,5 +42,21 @@ MonoBehaviour:
     m_Localized: "\u6B21\u306E\u30DA\u30FC\u30B8"
     m_Metadata:
       m_Items: []
+  - m_Id: 70614904733696
+    m_Localized: " \u30A4\u30F3\u30B9\u30C8\u30FC\u30EB"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 70614900539392
+    m_Localized: "\u7D39\u4ECB"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 75661248036864
+    m_Localized: "Git\u306F\u304B\u3063\u3053\u3044\u3044\u3053\u3068\u3084\u3063\u3066\u3044\u308B\u304B\u3063\u3053\u3044\u3044\u30BD\u30D5\u30C8\u3067\u3059\u3088\uFF01\n\nGit\u306F\u304B\u3063\u3053\u3044\u3044\u3053\u3068\u3084\u3063\u3066\u3044\u308B\u304B\u3063\u3053\u3044\u3044\u30BD\u30D5\u30C8\u3067\u3059\u3088\uFF01\n\nGit\u306F\u304B\u3063\u3053\u3044\u3044\u3053\u3068\u3084\u3063\u3066\u3044\u308B\u304B\u3063\u3053\u3044\u3044\u30BD\u30D5\u30C8\u3067\u3059\u3088\uFF01"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 75664020471808
+    m_Localized: "\uFF1F\uFF1F\uFF1F"
+    m_Metadata:
+      m_Items: []
   references:
     version: 1

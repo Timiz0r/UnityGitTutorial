@@ -10,7 +10,9 @@ namespace TimiUtils.GitTutorial
         [MenuItem("Window/Git Tutorial")]
         public static void Open()
         {
-            EditorWindow.GetWindow<GitTutorialWindow>("Git Tutorial").Show();
+            var window = EditorWindow.GetWindow<GitTutorialWindow>("Git Tutorial");
+            window.minSize = new Vector2(400, 800);
+            window.Show();
         }
 
         public void OnGUI()
